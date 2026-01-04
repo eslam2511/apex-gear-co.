@@ -5,6 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Clock, Bell, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
+// Import drop images
+import dropHelmet from "@/assets/drop-helmet.jpg";
+import dropSuit from "@/assets/drop-suit.jpg";
+import dropGloves from "@/assets/drop-gloves.jpg";
+import dropVisor from "@/assets/drop-visor.jpg";
+
 interface Drop {
   id: number;
   name: string;
@@ -22,7 +28,7 @@ const drops: Drop[] = [
     name: "PHANTOM X CARBON",
     description: "Limited edition full carbon helmet with holographic finish. Only 100 pieces worldwide.",
     releaseDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000), // 2 days from now
-    image: "/placeholder.svg",
+    image: dropHelmet,
     price: 1499,
     isLive: false,
     category: "Helmet",
@@ -32,7 +38,7 @@ const drops: Drop[] = [
     name: "NEON RIDER SUIT",
     description: "UV-reactive racing suit with integrated LED accent strips. Glow in the dark.",
     releaseDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days from now
-    image: "/placeholder.svg",
+    image: dropSuit,
     price: 1299,
     isLive: false,
     category: "Suit",
@@ -42,7 +48,7 @@ const drops: Drop[] = [
     name: "CYBER GLOVES V1",
     description: "First drop of our cyber series. Titanium knuckle guards with touch sensors.",
     releaseDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), // Live now
-    image: "/placeholder.svg",
+    image: dropGloves,
     price: 349,
     isLive: true,
     category: "Gloves",
@@ -52,7 +58,7 @@ const drops: Drop[] = [
     name: "MIDNIGHT VISOR PACK",
     description: "Set of 3 premium visors: Mirror Chrome, Dark Smoke, and Iridium Gold.",
     releaseDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days from now
-    image: "/placeholder.svg",
+    image: dropVisor,
     price: 199,
     isLive: false,
     category: "Accessories",
