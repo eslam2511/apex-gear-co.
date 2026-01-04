@@ -6,6 +6,16 @@ import { Filter, SlidersHorizontal, Grid3X3, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
+// Import shop images
+import shopHelmet1 from "@/assets/shop-helmet-1.jpg";
+import shopHelmet2 from "@/assets/shop-helmet-2.jpg";
+import shopGloves1 from "@/assets/shop-gloves-1.jpg";
+import shopGloves2 from "@/assets/shop-gloves-2.jpg";
+import shopJacket1 from "@/assets/shop-jacket-1.jpg";
+import shopGear1 from "@/assets/shop-gear-1.jpg";
+import shopAccessory1 from "@/assets/shop-accessory-1.jpg";
+import shopAccessory2 from "@/assets/shop-accessory-2.jpg";
+
 interface ShopCategoryProps {
   category: "helmets" | "gloves" | "gear" | "accessories";
 }
@@ -16,14 +26,14 @@ const categoryData = {
     subtitle: "FULL FACE. FULL PROTECTION.",
     description: "Premium helmets engineered for speed, safety, and style. DOT & ECE certified.",
     products: [
-      { id: 1, name: "APEX CARBON X1", price: 899, originalPrice: 1099, image: "/placeholder.svg", category: "Full Face", rating: 5, isNew: true },
-      { id: 2, name: "STEALTH MATTE PRO", price: 549, image: "/placeholder.svg", category: "Full Face", rating: 5 },
-      { id: 3, name: "AERO VISION GT", price: 699, originalPrice: 799, image: "/placeholder.svg", category: "Full Face", rating: 4, isSale: true },
-      { id: 4, name: "CARBON LITE V2", price: 799, image: "/placeholder.svg", category: "Full Face", rating: 5 },
-      { id: 5, name: "HYPER SHELL X", price: 649, image: "/placeholder.svg", category: "Modular", rating: 4, isNew: true },
-      { id: 6, name: "VORTEX STREET", price: 399, image: "/placeholder.svg", category: "Open Face", rating: 4 },
-      { id: 7, name: "TITAN CARBON R", price: 1199, image: "/placeholder.svg", category: "Racing", rating: 5 },
-      { id: 8, name: "PHANTOM DARK", price: 499, image: "/placeholder.svg", category: "Full Face", rating: 5 },
+      { id: 1, name: "APEX CARBON X1", price: 899, originalPrice: 1099, image: shopHelmet1, category: "Full Face", rating: 5, isNew: true },
+      { id: 2, name: "STEALTH MATTE PRO", price: 549, image: shopHelmet2, category: "Full Face", rating: 5 },
+      { id: 3, name: "AERO VISION GT", price: 699, originalPrice: 799, image: shopHelmet1, category: "Full Face", rating: 4, isSale: true },
+      { id: 4, name: "CARBON LITE V2", price: 799, image: shopHelmet2, category: "Full Face", rating: 5 },
+      { id: 5, name: "HYPER SHELL X", price: 649, image: shopHelmet1, category: "Modular", rating: 4, isNew: true },
+      { id: 6, name: "VORTEX STREET", price: 399, image: shopHelmet2, category: "Open Face", rating: 4 },
+      { id: 7, name: "TITAN CARBON R", price: 1199, image: shopHelmet1, category: "Racing", rating: 5 },
+      { id: 8, name: "PHANTOM DARK", price: 499, image: shopHelmet2, category: "Full Face", rating: 5 },
     ],
   },
   gloves: {
@@ -31,12 +41,12 @@ const categoryData = {
     subtitle: "GRIP. CONTROL. PRECISION.",
     description: "Racing and street gloves with advanced protection and touchscreen compatibility.",
     products: [
-      { id: 1, name: "CARBON KNUCKLE PRO", price: 189, image: "/placeholder.svg", category: "Racing", rating: 5, isNew: true },
-      { id: 2, name: "STEALTH TOUCH", price: 129, image: "/placeholder.svg", category: "Street", rating: 5 },
-      { id: 3, name: "SUMMER MESH V3", price: 79, originalPrice: 99, image: "/placeholder.svg", category: "Summer", rating: 4, isSale: true },
-      { id: 4, name: "WINTER THERMAL", price: 149, image: "/placeholder.svg", category: "Winter", rating: 5 },
-      { id: 5, name: "TRACK DAY ELITE", price: 249, image: "/placeholder.svg", category: "Racing", rating: 5, isNew: true },
-      { id: 6, name: "COMMUTER GRIP", price: 89, image: "/placeholder.svg", category: "Street", rating: 4 },
+      { id: 1, name: "CARBON KNUCKLE PRO", price: 189, image: shopGloves1, category: "Racing", rating: 5, isNew: true },
+      { id: 2, name: "STEALTH TOUCH", price: 129, image: shopGloves2, category: "Street", rating: 5 },
+      { id: 3, name: "SUMMER MESH V3", price: 79, originalPrice: 99, image: shopGloves1, category: "Summer", rating: 4, isSale: true },
+      { id: 4, name: "WINTER THERMAL", price: 149, image: shopGloves2, category: "Winter", rating: 5 },
+      { id: 5, name: "TRACK DAY ELITE", price: 249, image: shopGloves1, category: "Racing", rating: 5, isNew: true },
+      { id: 6, name: "COMMUTER GRIP", price: 89, image: shopGloves2, category: "Street", rating: 4 },
     ],
   },
   gear: {
@@ -44,14 +54,14 @@ const categoryData = {
     subtitle: "ARMOR UP. RIDE HARD.",
     description: "Full-body protection from jackets to boots. CE-rated armor for serious riders.",
     products: [
-      { id: 1, name: "PHANTOM JACKET", price: 449, image: "/placeholder.svg", category: "Jackets", rating: 5, isNew: true },
-      { id: 2, name: "STREET ARMOR VEST", price: 199, image: "/placeholder.svg", category: "Protection", rating: 5 },
-      { id: 3, name: "RACING SUIT V2", price: 899, originalPrice: 1099, image: "/placeholder.svg", category: "Suits", rating: 5, isSale: true },
-      { id: 4, name: "KEVLAR PANTS", price: 299, image: "/placeholder.svg", category: "Pants", rating: 4 },
-      { id: 5, name: "CARBON BOOTS X1", price: 349, image: "/placeholder.svg", category: "Boots", rating: 5, isNew: true },
-      { id: 6, name: "SPINE GUARD PRO", price: 159, image: "/placeholder.svg", category: "Protection", rating: 5 },
-      { id: 7, name: "KNEE SLIDERS RACE", price: 49, image: "/placeholder.svg", category: "Protection", rating: 4 },
-      { id: 8, name: "ARMORED HOODIE", price: 279, image: "/placeholder.svg", category: "Casual", rating: 5 },
+      { id: 1, name: "PHANTOM JACKET", price: 449, image: shopJacket1, category: "Jackets", rating: 5, isNew: true },
+      { id: 2, name: "STREET ARMOR VEST", price: 199, image: shopGear1, category: "Protection", rating: 5 },
+      { id: 3, name: "RACING SUIT V2", price: 899, originalPrice: 1099, image: shopJacket1, category: "Suits", rating: 5, isSale: true },
+      { id: 4, name: "KEVLAR PANTS", price: 299, image: shopGear1, category: "Pants", rating: 4 },
+      { id: 5, name: "CARBON BOOTS X1", price: 349, image: shopJacket1, category: "Boots", rating: 5, isNew: true },
+      { id: 6, name: "SPINE GUARD PRO", price: 159, image: shopGear1, category: "Protection", rating: 5 },
+      { id: 7, name: "KNEE SLIDERS RACE", price: 49, image: shopJacket1, category: "Protection", rating: 4 },
+      { id: 8, name: "ARMORED HOODIE", price: 279, image: shopGear1, category: "Casual", rating: 5 },
     ],
   },
   accessories: {
@@ -59,14 +69,14 @@ const categoryData = {
     subtitle: "COMPLETE YOUR SETUP.",
     description: "LED lights, phone mounts, visors, and everything to upgrade your ride.",
     products: [
-      { id: 1, name: "RGB LED KIT PRO", price: 149, image: "/placeholder.svg", category: "Lighting", rating: 5, isNew: true },
-      { id: 2, name: "PHONE MOUNT X1", price: 59, image: "/placeholder.svg", category: "Mounts", rating: 5 },
-      { id: 3, name: "TINTED VISOR", price: 89, originalPrice: 109, image: "/placeholder.svg", category: "Visors", rating: 4, isSale: true },
-      { id: 4, name: "DISC LOCK ALARM", price: 79, image: "/placeholder.svg", category: "Security", rating: 5 },
-      { id: 5, name: "CHAIN LOCK HEAVY", price: 129, image: "/placeholder.svg", category: "Security", rating: 5 },
-      { id: 6, name: "BLUETOOTH COMM", price: 199, image: "/placeholder.svg", category: "Electronics", rating: 4, isNew: true },
-      { id: 7, name: "TANK PAD CARBON", price: 39, image: "/placeholder.svg", category: "Protection", rating: 4 },
-      { id: 8, name: "HELMET CAM MOUNT", price: 49, image: "/placeholder.svg", category: "Mounts", rating: 5 },
+      { id: 1, name: "RGB LED KIT PRO", price: 149, image: shopAccessory1, category: "Lighting", rating: 5, isNew: true },
+      { id: 2, name: "PHONE MOUNT X1", price: 59, image: shopAccessory2, category: "Mounts", rating: 5 },
+      { id: 3, name: "TINTED VISOR", price: 89, originalPrice: 109, image: shopAccessory1, category: "Visors", rating: 4, isSale: true },
+      { id: 4, name: "DISC LOCK ALARM", price: 79, image: shopAccessory2, category: "Security", rating: 5 },
+      { id: 5, name: "CHAIN LOCK HEAVY", price: 129, image: shopAccessory1, category: "Security", rating: 5 },
+      { id: 6, name: "BLUETOOTH COMM", price: 199, image: shopAccessory2, category: "Electronics", rating: 4, isNew: true },
+      { id: 7, name: "TANK PAD CARBON", price: 39, image: shopAccessory1, category: "Protection", rating: 4 },
+      { id: 8, name: "HELMET CAM MOUNT", price: 49, image: shopAccessory2, category: "Mounts", rating: 5 },
     ],
   },
 };
