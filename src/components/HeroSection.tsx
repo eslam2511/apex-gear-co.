@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-helmet.jpg";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-24">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-dark">
         <div className="absolute inset-0 bg-gradient-glow opacity-50" />
@@ -117,7 +117,7 @@ export function HeroSection() {
               <motion.img
                 src={heroImage}
                 alt="Futuristic motorcycle helmet with neon accents"
-                className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
+                className="relative z-10 w-full h-full object-contain drop-shadow-2xl rounded-3xl"
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
