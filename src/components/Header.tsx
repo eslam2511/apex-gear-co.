@@ -51,22 +51,26 @@ export function Header() {
             <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
               <User className="w-5 h-5" />
             </Button>
-            <Button variant="outline" size="icon" className="relative">
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                3
-              </span>
-            </Button>
+            <Link to="/cart">
+              <Button variant="outline" size="icon" className="relative">
+                <ShoppingBag className="w-5 h-5" />
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                  3
+                </span>
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                3
-              </span>
-            </Button>
+            <Link to="/cart">
+              <Button variant="ghost" size="icon" className="relative">
+                <ShoppingBag className="w-5 h-5" />
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                  3
+                </span>
+              </Button>
+            </Link>
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
