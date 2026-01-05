@@ -117,7 +117,7 @@ export function HeroSection() {
               <motion.img
                 src={heroImage}
                 alt="Futuristic motorcycle helmet with neon accents"
-                className="relative z-10 w-full h-full object-contain drop-shadow-2xl rounded-3xl"
+                className="relative z-10 w-full h-full object-cover drop-shadow-2xl rounded-[2.5rem]"
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
