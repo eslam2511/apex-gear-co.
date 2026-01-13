@@ -10,6 +10,7 @@ import productLed from "@/assets/product-led.jpg";
 
 const trendingProducts = [
   {
+    id: "trending-1",
     image: productHelmet,
     name: "Phantom X1 Helmet",
     category: "Helmets",
@@ -19,6 +20,7 @@ const trendingProducts = [
     isNew: true,
   },
   {
+    id: "trending-2",
     image: productGloves,
     name: "Apex Pro Gloves",
     category: "Gloves",
@@ -27,6 +29,7 @@ const trendingProducts = [
     isNew: false,
   },
   {
+    id: "trending-3",
     image: productArmor,
     name: "Vortex Armor Jacket",
     category: "Protection",
@@ -35,6 +38,7 @@ const trendingProducts = [
     isNew: true,
   },
   {
+    id: "trending-4",
     image: productLed,
     name: "Neon Tail Light Kit",
     category: "Accessories",

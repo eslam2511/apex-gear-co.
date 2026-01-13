@@ -1,77 +1,15 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Minus, Plus, X, ShoppingBag, ArrowRight, Truck, Shield, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
-
-import shopHelmet1 from "@/assets/shop-helmet-1.jpg";
-import shopGloves1 from "@/assets/shop-gloves-1.jpg";
-import shopGear1 from "@/assets/shop-gear-1.jpg";
-
-interface CartItem {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  quantity: number;
-  image: string;
-  size?: string;
-  color?: string;
-}
-
-const initialCartItems: CartItem[] = [
-  {
-    id: 1,
-    name: "Apex Carbon Helmet",
-    category: "Helmets",
-    price: 599,
-    quantity: 1,
-    image: shopHelmet1,
-    size: "M",
-    color: "Matte Black",
-  },
-  {
-    id: 2,
-    name: "Phantom Racing Gloves",
-    category: "Gloves",
-    price: 189,
-    quantity: 2,
-    image: shopGloves1,
-    size: "L",
-    color: "Black/Red",
-  },
-  {
-    id: 3,
-    name: "Storm Rider Jacket",
-    category: "Gear",
-    price: 449,
-    quantity: 1,
-    image: shopGear1,
-    size: "XL",
-    color: "Stealth Gray",
-  },
-];
+import { useCart } from "@/contexts/CartContext";
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
+  const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
 
-  const updateQuantity = (id: number, change: number) => {
-    setCartItems((items) =>
-      items.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + change) }
-          : item
-      )
-    );
-  };
-
-  const removeItem = (id: number) => {
-    setCartItems((items) => items.filter((item) => item.id !== id));
-  };
-
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = getCartTotal();
   const shipping = subtotal > 500 ? 0 : 25;
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
@@ -159,7 +97,7 @@ export default function Cart() {
                           </div>
                         </div>
                         <button
-                          onClick={() => removeItem(item.id)}
+                          onClick={() => removeFromCart(item.id)}
                           className="text-muted-foreground hover:text-accent transition-colors p-1"
                         >
                           <X className="w-5 h-5" />
@@ -170,7 +108,7 @@ export default function Cart() {
                       <div className="flex items-center justify-between mt-4">
                         <div className="flex items-center gap-3">
                           <button
-                            onClick={() => updateQuantity(item.id, -1)}
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
                             className="w-8 h-8 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center"
                           >
                             <Minus className="w-4 h-4" />
@@ -179,7 +117,7 @@ export default function Cart() {
                             {item.quantity}
                           </span>
                           <button
-                            onClick={() => updateQuantity(item.id, 1)}
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             className="w-8 h-8 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center"
                           >
                             <Plus className="w-4 h-4" />
@@ -231,10 +169,12 @@ export default function Cart() {
                     </p>
                   )}
 
-                  <Button variant="hero" size="lg" className="w-full mb-4">
-                    Checkout
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+                  <Link to="/checkout">
+                    <Button variant="hero" size="lg" className="w-full mb-4">
+                      Checkout
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
 
                   <Link to="/shop/helmets">
                     <Button variant="outline" size="lg" className="w-full">
